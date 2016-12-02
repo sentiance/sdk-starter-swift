@@ -118,6 +118,7 @@
 				TargetAttributes = {
 					BE74CAE81CFC2B63006F56F1 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -289,6 +290,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sentiance.sdkstarterswift.SDKStarterSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SDKStarterSwift/ObjCHeader.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -307,6 +309,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sentiance.sdkstarterswift.SDKStarterSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = SDKStarterSwift/ObjCHeader.h;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -329,6 +332,7 @@
 				BE74CAFD1CFC2B63006F56F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
