@@ -22,6 +22,21 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Sentiance SDK requires and uses location efficiently for building an accurate daily journey</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sentiance SDK requires and uses location efficiently for building an accurate daily journey</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Sentiance SDK requires and uses location efficiently for building an accurate daily journey</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Sentiance SDK requires and uses location efficiently for building an accurate daily journey</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Sentiance SDK requires and uses motion efficiently for building an accurate daily journey</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
@@ -47,14 +62,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Journeys requires and uses location efficiently for building an accurate daily journey</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Journeys requires and uses location efficiently for building an accurate daily journey</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 </dict>
 </plist>

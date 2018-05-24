@@ -9,6 +9,6 @@
 #ifndef ObjCHeader_h
 #define ObjCHeader_h
 
-#import <SENTTransportDetectionSDK/SENTTransportDetectionSDK.h>
+#import <SENTTransportDetectionSDK/SENTSDK.h>
 
 #endif /* ObjCHeader_h */

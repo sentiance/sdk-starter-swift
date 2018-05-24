@@ -8,26 +8,53 @@
 
 import UIKit
 
-let APP_ID = "YOUR_APP_ID"
-let APP_SECRET = "YOUR_APP_SECRET"
+let APPID = "YOUR_APP_ID"
+let SECRET = "YOUR_APP_SECRET"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, SENTTransportDetectionSDKDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var sdk: SENTTransportDetectionSDK?;
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        sdk = SENTTransportDetectionSDK.init(configurationData: [
-            "appid": APP_ID,
-            "secret": APP_SECRET,
-            "autostart": true,
-            "appLaunchOptions": (launchOptions ?? [AnyHashable: Any]())
-            ])
+
+        let sdk:SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        let config = SENTConfig.init(appId: APPID, secret: SECRET, launchOptions: launchOptions)
+
+        sdk.initWith(config, success: {
+            self.didAuthenticationSuccess()
+            self.startSentianceSDK()
+        }) { issue in
+            print("SDK failed to init: \(issue)")
+        }
         
         return true
+    }
+
+    func didAuthenticationSuccess() {
+        let sdk: SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+
+        print("==== Sentiance SDK started, version: \(sdk.getVersion())");
+        print("==== Sentiance platform user id for this install: \(sdk.getUserId())");
+
+        let notificationName = Notification.Name("SdkAuthenticationSuccess")
+        NotificationCenter.default.post(name: notificationName, object: nil)
+    }
+
+    func startSentianceSDK() {
+        let sdk: SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        sdk.start({ status in
+            if let uStatus = status {
+                if (uStatus.startStatus == .started) {
+                    print("SDK started properly")
+                } else if (uStatus.startStatus == .pending) {
+                    print("Something prevented the SDK to start properly. Once fixed, the SDK will start automatically");
+                } else {
+                    print("SDK did not start");
+                }
+
+            }
+        })
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -50,16 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, SENTTransportDetectionSDK
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    
-    func didAuthenticationSuccess() {
-        NSLog("%@", "Successfully authenticated!")
-        sdk?.startDetections()
-    }
-    
-    func didAuthenticationFailed(_ error: NSError!) {
-        NSLog("ERROR IN AUTHENTICATION OF SENTIANCE SDK -> %@", error.description)
     }
 }
 
