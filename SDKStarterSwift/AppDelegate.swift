@@ -2,14 +2,14 @@
 //  AppDelegate.swift
 //  SDKStarterSwift
 //
-//  Created by Muhammad Iqbal on 30/05/2016.
-//  Copyright © 2016 Sentiance Corporation. All rights reserved.
+//  Created by Gustavo Nascimento on 11/06/2018.
+//  Copyright © 2018 Sentiance Corporation. All rights reserved.
 //
 
 import UIKit
 
-let APPID = "YOUR_APP_ID"
-let SECRET = "YOUR_APP_SECRET"
+let APPID = "APPID"
+let SECRET = "SECRET"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        let sdk:SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        let sdk:SENTSDK = SENTSDK.sharedInstance()
         let config = SENTConfig.init(appId: APPID, secret: SECRET, launchOptions: launchOptions)
 
         sdk.initWith(config, success: {
@@ -32,23 +32,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func didAuthenticationSuccess() {
-        let sdk: SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        let sdk: SENTSDK = SENTSDK.sharedInstance()
 
         print("==== Sentiance SDK started, version: \(sdk.getVersion())");
         print("==== Sentiance platform user id for this install: \(sdk.getUserId())");
-
-        let notificationName = Notification.Name("SdkAuthenticationSuccess")
-        NotificationCenter.default.post(name: notificationName, object: nil)
     }
 
     func startSentianceSDK() {
-        let sdk: SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        let sdk: SENTSDK = SENTSDK.sharedInstance()
         sdk.start({ status in
             if let uStatus = status {
                 if (uStatus.startStatus == .started) {
                     print("SDK started properly")
                 } else if (uStatus.startStatus == .pending) {
-                    print("Something prevented the SDK to start properly. Once fixed, the SDK will start automatically");
+                    print("Something prevented the SDK to start properly (see location permission settings). Once fixed, the SDK will start automatically");
                 } else {
                     print("SDK did not start");
                 }
