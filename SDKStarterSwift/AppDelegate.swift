@@ -56,6 +56,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
     }
+    
+    func stopSentianceSDK() {
+        let sdk: SENTSDK = SENTSDK.sharedInstance() as! SENTSDK
+        
+        //To stop SDK
+        sdk.stop()
+        
+        //You also can use postponed stop after X seconds
+        //sdk.stop(after: 20)
+    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
