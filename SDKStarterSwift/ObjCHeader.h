@@ -2,13 +2,13 @@
 //  ObjCHeader.h
 //  SDKStarterSwift
 //
-//  Created by Muhammad Iqbal on 30/05/2016.
-//  Copyright © 2016 Sentiance Corporation. All rights reserved.
+//  Created by Gustavo Nascimento on 11/06/2018.
+//  Copyright © 2018 Sentiance Corporation. All rights reserved.
 //
 
 #ifndef ObjCHeader_h
 #define ObjCHeader_h
 
-#import <SENTTransportDetectionSDK/SENTSDK.h>
+@import SENTSDK;
 
 #endif /* ObjCHeader_h */
